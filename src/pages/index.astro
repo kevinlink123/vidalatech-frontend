@@ -1,7 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 import '../styles/global.css';
-import logo from '../assets/devops.png';
+// import logo from '../assets/devops.png';
+// import logo from '../assets/Vidala-Tech-Logo.png';
+import logo from '../assets/vidala-tech-logo.svg';
 
 const services = [
   {
@@ -60,17 +62,18 @@ const projects = [
 <body class="bg-main-white text-gray-900">
   <!-- Navigation -->
   <nav class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
       <div class="flex justify-between items-center h-16">
         <a href="#" class="flex items-center space-x-2">
-          <div class="w-10 h-10 p-1.5 rounded bg-primary">
-			<Image src={logo} alt="KY Logo" />
-		  </div>
-          <span class="text-xl font-bold text-gray-900">KY Cloud</span>
+          <div class="w-14 p-1.5 rounded">
+            <Image src={logo} alt="KY Logo" />
+          </div>
+          <span class="text-3xl font-bold text-gray-900 tracking-wider">Vidala Tech</span>
         </a>
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-8">
+          <a href="#nosotros" class="text-gray-600 hover:text-primary transition-colors">Nosotros</a>
           <a href="#servicios" class="text-gray-600 hover:text-primary transition-colors">Servicios</a>
           <a href="#competencias" class="text-gray-600 hover:text-primary transition-colors">Competencias</a>
           <a href="#proyectos" class="text-gray-600 hover:text-primary transition-colors">Proyectos</a>
@@ -91,6 +94,7 @@ const projects = [
     <!-- Mobile Menu -->
     <div class="hidden md:hidden border-t border-gray-200 bg-white" id="mobileMenu">
       <div class="px-4 py-4 space-y-3">
+        <a href="#nosotros" class="block py-2 text-gray-600">Nosotros</a>
         <a href="#servicios" class="block py-2 text-gray-600">Servicios</a>
         <a href="#competencias" class="block py-2 text-gray-600">Competencias</a>
         <a href="#proyectos" class="block py-2 text-gray-600">Proyectos</a>
@@ -127,6 +131,97 @@ const projects = [
           >
             Ver proyectos
           </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="nosotros" class="py-20 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <!-- Left Column: Content -->
+        <div>
+          <h2 class="text-4xl font-bold mb-6 text-gray-900">
+            Software Factory especializada en soluciones digitales
+          </h2>
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+            Somos una PyME enfocada en el desarrollo de <strong class="text-gray-900">soluciones web y mobile</strong> que resuelven problemas reales de negocio. Combinamos experiencia técnica con un enfoque práctico para entregar plataformas digitales robustas y escalables.
+          </p>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            Construimos cada proyecto con <strong class="text-gray-900">arquitecturas escalables</strong> que crecen con tu negocio, utilizando tecnologías modernas y mejores prácticas de la industria.
+          </p>
+
+          <div class="space-y-4">
+            <div class="flex items-start space-x-4">
+              <div class="shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">Metodologías Ágiles</h3>
+                <p class="text-gray-600">Trabajamos con sprints y entregas iterativas para mantener flexibilidad y transparencia en cada proyecto.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">Integración Continua</h3>
+                <p class="text-gray-600">Implementamos CI/CD para desplegar cambios rápidamente con ciclos de trabajo cortos y bien definidos.</p>
+              </div>
+            </div>
+
+            <div class="flex items-start space-x-4">
+              <div class="shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+                <svg class="w-6 h-6 text-primary" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-gray-900 mb-1">Calidad Garantizada</h3>
+                <p class="text-gray-600">Testing automatizado y code reviews para asegurar código limpio, mantenible y libre de bugs críticos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Stats/Highlights -->
+
+          <div class="bg-primary/5 p-8 rounded-2xl border-2 border-primary/20">
+            <h3 class="text-xl font-bold mb-4 text-gray-900">Nuestro Proceso</h3>
+            <div class="space-y-3">
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">1</div>
+                <span class="text-gray-700">Descubrimiento y analisis de requerimientos</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">2</div>
+                <span class="text-gray-700">Planificacion y definicion de procesos</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">3</div>
+                <span class="text-gray-700">Diseño de arquitectura y estandares</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">4</div>
+                <span class="text-gray-700">Desarrollo iterativo en sprints ágiles</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">5</div>
+                <span class="text-gray-700">Testing y QA continuo</span>
+              </div>
+              <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center text-sm font-bold">6</div>
+                <span class="text-gray-700">Deploy y soporte post-lanzamiento</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -177,7 +272,7 @@ const projects = [
       <!-- Scrolling competencies banner -->
       <div class="relative">
         <div class="flex animate-scroll space-x-8 mb-8">
-          {competencies.concat(competencies).concat(competencies).map((comp, idx) => (
+          {competencies.concat(competencies).concat(competencies).concat(competencies).concat(competencies).map((comp, idx) => (
             <div class="shrink-0 px-8 py-4 bg-primary-light backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-all">
               <span class="text-xl font-semibold whitespace-nowrap">{comp}</span>
             </div>
@@ -209,7 +304,7 @@ const projects = [
         transform: translateX(0);
       }
       100% {
-        transform: translateX(-33.333%);
+        transform: translateX(-100%);
       }
     }
 
