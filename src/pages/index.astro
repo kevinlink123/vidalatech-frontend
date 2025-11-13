@@ -33,9 +33,9 @@ const competencies = [
 
 const projects = [
   {
-    name: "WCloud",
-    slug: "wcloud",
-    description: "Plataforma de hosting completa con gestión de contenedores Docker, proxy reverso Traefik y sistema de correos corporativos.",
+    name: "Panel de Administracion de Hosting - Waisman Web",
+    slug: "panel-marca-blanca",
+    description: "Plataforma web para administracion de espacios de hosting para agencias de desarrollo de sitios web con soporte para CMS (wordpres, drupal, etc), web estaticas y deploy de apis.",
     tags: ["Web Dev", "API Dev", "DevOps/Cloud"]
   },
   {
@@ -241,7 +241,7 @@ const projects = [
 
       <div class="grid md:grid-cols-3 gap-8">
         {services.map((service) => (
-          <div class="p-8 rounded-xl bg-white border border-gray-200 hover:shadow-lg transition-shadow">
+          <div class="observable p-8 rounded-xl bg-white border border-gray-200 hover:shadow-lg transition-all lg:duration-700 duration-1000 ease-out translate-y-10 opacity-0">
             <div class="text-primary mb-4">
               <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                 {service.icon === 'code' && <path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/>}
@@ -407,6 +407,25 @@ const projects = [
   </footer>
 
   <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    // Crea un nuevo IntersectionObserver
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Si el elemento está en el viewport, quita la clase que lo oculta
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('translate-y-10', 'opacity-0');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.4
+    });
+
+    document.querySelectorAll('.observable').forEach(el => {
+      observer.observe(el);
+    });
+  });
+
     // Mobile menu toggle
     const menuBtn = document.getElementById('menuBtn')!;
     const mobileMenu = document.getElementById('mobileMenu')!;
