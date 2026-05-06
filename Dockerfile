@@ -4,6 +4,13 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm ci
 COPY . .
+
+# Recibir argumentos de build
+ARG PUBLIC_BACKEND_URL
+
+# Pasarlos como variables de entorno para el build de Astro
+ENV PUBLIC_BACKEND_URL=${PUBLIC_BACKEND_URL}
+
 RUN yarn build
 
 FROM nginx:alpine
