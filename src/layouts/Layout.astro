@@ -1,0 +1,142 @@
+---
+// src/layouts/Layout.astro
+import { Image } from 'astro:assets';
+import '../styles/global.css';
+import logo from '../assets/vidala-tech-logo.svg';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Vidala Tech - Soluciones Digitales Profesionales' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content={description}>
+  <title>{title} | Vidala Tech</title>
+  <link rel="icon" type="image/svg+xml" href="/vidala-tech-logo-BIG.svg" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-main-white text-gray-900">
+  <!-- Navigation -->
+  <nav class="fixed w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
+      <div class="flex justify-between items-center h-16">
+        <a href="/" class="flex items-center space-x-2">
+          <div class="w-14 p-1.5 rounded">
+            <Image src={logo} alt="Vidala Tech Logo" />
+          </div>
+          <span class="text-3xl font-bold text-gray-900 tracking-wider">Vidala Tech</span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="/#nosotros" class="text-gray-600 hover:text-primary transition-colors nav-link">Nosotros</a>
+          <a href="/#servicios" class="text-gray-600 hover:text-primary transition-colors nav-link">Servicios</a>
+          <a href="/#competencias" class="text-gray-600 hover:text-primary transition-colors nav-link">Competencias</a>
+          <a href="/proyectos" class="text-gray-600 hover:text-primary transition-colors">Proyectos</a>
+          <a href="/contacto" class="px-6 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors">
+            Contacto
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-gray-900" id="menuBtn">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="hidden md:hidden border-t border-gray-200 bg-white" id="mobileMenu">
+      <div class="px-4 py-4 space-y-3">
+        <a href="/#nosotros" class="block py-2 text-gray-600 nav-link">Nosotros</a>
+        <a href="/#servicios" class="block py-2 text-gray-600 nav-link">Servicios</a>
+        <a href="/#competencias" class="block py-2 text-gray-600 nav-link">Competencias</a>
+        <a href="/proyectos" class="block py-2 text-gray-600">Proyectos</a>
+        <a href="/contacto" class="block py-2 text-primary font-medium">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <slot />
+  </main>
+
+  <!-- Footer -->
+  <footer class="py-8 px-4 border-t border-gray-200 bg-gray-50">
+    <div class="max-w-7xl mx-auto text-center">
+      <p class="text-gray-600">
+        © {new Date().getFullYear()} Vidala Tech. Soluciones digitales profesionales.
+      </p>
+      <p class="mt-2 text-sm text-gray-600">
+        Buenos Aires, Argentina
+      </p>
+    </div>
+  </footer>
+
+  <script>
+  // Mobile menu toggle
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+
+  // Manejar links con hash desde cualquier página
+  document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+      //@ts-ignore
+      const href = this.getAttribute('href');
+      
+      // Si el link tiene hash (ej: "/#nosotros")
+      if (href && href.includes('#')) {
+        e.preventDefault();
+        
+        const [path, hash] = href.split('#');
+        const targetId = hash;
+        
+        // Si ya estamos en la home
+        if (window.location.pathname === '/' || window.location.pathname === '') {
+          // Scroll directo a la sección
+          const target = document.getElementById(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        } else {
+          // Si estamos en otra página, navegar a la home con hash
+          window.location.href = href;
+        }
+        
+        // Cerrar menú mobile si está abierto
+        if (mobileMenu) {
+          mobileMenu.classList.add('hidden');
+        }
+      }
+    });
+  });
+
+  // Manejar scroll cuando se carga la home con hash
+  if (window.location.hash) {
+    const targetId = window.location.hash.substring(1);
+    setTimeout(() => {
+      const target = document.getElementById(targetId);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 100);
+  }
+</script>
+</body>
+</html>

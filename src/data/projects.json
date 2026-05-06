@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "slug": "panel-marca-blanca",
+    "title": "Panel de Administración de Hosting - Marca Blanca",
+    "description": "Plataforma web para administración de espacios de hosting para agencias de desarrollo de sitios web con soporte para CMS (WordPress, Drupal, etc), webs estáticas y deploy de APIs. Una solución completa que permite a las agencias gestionar múltiples clientes desde un único panel.",
+    "githubUrl": "",
+    "category": "desarrollo-web",
+    "technologies": ["React", "Node.js", "NestJS", "DevOps", "Docker"],
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600",
+    "completionDate": "2026-01",
+    "liveUrl": "https://ejemplo-panel.com",
+    "challenges": "El cliente necesitaba una plataforma white-label que permitiera a las agencias de desarrollo gestionar el hosting de sus clientes sin depender de cPanel tradicional. El mayor desafío fue crear una interfaz intuitiva que simplificara operaciones complejas de servidor.",
+    "solutions": "Desarrollamos un panel de control personalizado con una API robusta en NestJS que abstrae toda la complejidad del manejo de servidores. Implementamos un sistema de templates para despliegues automáticos de WordPress, Drupal y sitios estáticos.",
+    "features": [
+      "Despliegue automático de sitios WordPress y Drupal",
+      "Gestión de dominios y SSL automatizada",
+      "Panel de estadísticas en tiempo real",
+      "Sistema de backups automáticos",
+      "Multi-tenant con roles y permisos personalizables",
+      "API REST documentada para integraciones"
+    ],
+    "results": [
+      { "metric": "Tiempo de deploy", "value": "-80%" },
+      { "metric": "Soporte técnico", "value": "-60%" },
+      { "metric": "Clientes gestionados", "value": "+200%" },
+      { "metric": "Uptime", "value": "99.9%" }
+    ]
+  },
+  {
+    "id": 2,
+    "slug": "cotizador-interiores",
+    "title": "Cotizador de Interiores - Jessica Waisman Design",
+    "description": "Componente web interactivo que permite a los clientes del estudio de diseño generar cotizaciones preliminares de servicios de interiorismo en tiempo real. Una herramienta que transforma la experiencia del cliente al brindar transparencia de costos desde el primer contacto.",
+    "category": "desarrollo-web",
+    "technologies": ["React", "Tailwind", "WordPress", "PHP", "JavaScript"],
+    "image": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600",
+    "completionDate": "2026-05",
+    "liveUrl": "",
+    "challenges": "El estudio de diseño de interiores necesitaba reducir la fricción en el proceso de consulta inicial. Muchos clientes potenciales abandonaban el contacto al no tener claridad sobre los costos involucrados en un proyecto de interiorismo.",
+    "solutions": "Desarrollamos un cotizador interactivo como plugin personalizado de WordPress, integrado directamente en el sitio existente. La herramienta guía al usuario paso a paso, calculando costos estimados según los servicios seleccionados y las dimensiones del espacio. Una copia del presupuesto es descargada por el usuario y otra almacenada en los servidores el estudio.",
+    "features": [
+      "Cotización en tiempo real basada en servicios y dimensiones",
+      "Interfaz intuitiva paso a paso con feedback visual inmediato",
+      "Integración nativa con WordPress como plugin personalizado",
+      "Sistema de captura de leads con descarga automática de cotización en formato PDF",
+      "Diseño responsive adaptado y customizable directo desde Wordpress",
+      "Panel de administración para actualizar precios y servicios"
+    ],
+    "results": [
+      { "metric": "Consultas Iniciales", "value": "Menos Friccion" },
+      { "metric": "Tasa de abandono", "value": "-35%" },
+      { "metric": "Tiempo por cotización preliminar", "value": "-70%" },
+      { "metric": "Expectativas alineadas", "value": "92%" }
+    ]
+  }
+]

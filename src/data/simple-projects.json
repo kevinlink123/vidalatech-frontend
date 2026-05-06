@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "slug": "panel-marca-blanca",
+    "title": "Panel de Administración de Hosting - Marca Blanca",
+    "description": "Plataforma web para administración de espacios de hosting para agencias de desarrollo de sitios web con soporte para CMS (WordPress, Drupal, etc), webs estáticas y deploy de APIs.",
+    "category": "desarrollo-web",
+    "technologies": ["Typescript", "React.JS", "Node.js", "NestJS", "Docker", "CI/CD"],
+    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600",
+    "completionDate": "2026-01",
+    "liveUrl": "https://ejemplo-panel.com"
+  },
+  {
+    "id": 2,
+    "slug": "custom-platforms",
+    "title": "Cotizador de Interiores - Jessica Waisman Design",
+    "description": "Componente personalizado para que posibles clientes puedan crear cotizaciones de los servicios del estudio de diseño de interiores. Captura datos, crea documentos y mantiene al cliente con expectativas reales del servicio.",
+    "category": "desarrollo-web",
+    "technologies": ["React", "Tailwind", "PostgreSQL", "Wordpress"],
+    "image": "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600",
+    "completionDate": "2026-04"
+  }
+]

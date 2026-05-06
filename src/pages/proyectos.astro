@@ -1,0 +1,182 @@
+---
+import Layout from '../layouts/Layout.astro';
+import projects from '../data/projects.json';
+
+const url = new URL(Astro.request.url);
+const selectedCategory = url.searchParams.get('categoria');
+console.log(selectedCategory);
+const filteredProjects = selectedCategory 
+  ? projects.filter(p => p.category === selectedCategory)
+  : projects;
+
+const pageTitle = selectedCategory 
+  ? `Proyectos ${selectedCategory === 'desarrollo-web' ? 'Web' : 'Mobile'}`
+  : 'Proyectos';
+---
+
+<Layout title={pageTitle}>
+  <!-- Page Header -->
+  <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto text-center">
+      <h1 class="text-5xl md:text-6xl font-bold mb-6 text-gray-900">
+        Proyectos <span class="text-primary">Destacados</span>
+      </h1>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Conocé algunos de los proyectos que desarrollamos combinando 
+        creatividad, tecnología y estrategia digital
+      </p>
+    </div>
+  </section>
+
+  <!-- Filtros de categoría -->
+  <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white border-b border-gray-200">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-center gap-4 flex-wrap">
+        <a 
+          href="/proyectos" 
+          class={`px-6 py-3 rounded-lg text-sm font-medium transition-all ${
+            !selectedCategory 
+              ? 'bg-primary text-white shadow-lg' 
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-gray-300'
+          }`}
+        >
+          Todos los proyectos
+        </a>
+        <a 
+          href="/proyectos?categoria=desarrollo-web" 
+          class={`px-6 py-3 rounded-lg text-sm font-medium transition-all ${
+            selectedCategory === 'desarrollo-web'
+              ? 'bg-primary text-white shadow-lg' 
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-gray-300'
+          }`}
+        >
+          🌐 Desarrollo Web
+        </a>
+        <a 
+          href="/proyectos?categoria=desarrollo-mobile" 
+          class={`px-6 py-3 rounded-lg text-sm font-medium transition-all ${
+            selectedCategory === 'desarrollo-mobile'
+              ? 'bg-primary text-white shadow-lg' 
+              : 'bg-gray-100 text-gray-600 hover:bg-gray-200 border border-gray-300'
+          }`}
+        >
+          📱 Desarrollo Mobile
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Grid de proyectos -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50">
+    <div class="max-w-7xl mx-auto">
+      {filteredProjects.length > 0 ? (
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProjects.map((project) => (
+            <a 
+              href={`/proyectos/${project.slug || project.id}`} 
+              class="group block p-8 rounded-xl bg-white border border-gray-200 hover:shadow-xl hover:border-primary transition-all animate-fade-up"
+            >
+              <!-- Imagen del proyecto -->
+              {project.image && (
+                <div class="mb-6 -mx-4 -mt-4 rounded-t-xl overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    class="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                </div>
+              )}
+              
+              <h3 class="text-2xl font-bold mb-3 text-gray-900 group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
+              <p class="mb-6 text-gray-600 line-clamp-3">
+                {project.description}
+              </p>
+              
+              <!-- Tecnologías -->
+              {project.technologies && (
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.map((tech: string) => (
+                    <span class="px-3 py-1 rounded-full text-sm font-medium text-primary bg-primary-lighter">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              )}
+              
+              <!-- Categoría y fecha -->
+              <div class="flex items-center justify-between mb-4">
+                {project.category && (
+                  <span class="text-sm text-gray-500">
+                    {project.category === 'desarrollo-web' ? '🌐 Web' : '📱 Mobile'}
+                  </span>
+                )}
+                {project.completionDate && (
+                  <span class="text-sm text-gray-500">
+                    {new Date(project.completionDate).toLocaleDateString('es-AR', { 
+                      year: 'numeric', 
+                      month: 'long' 
+                    })}
+                  </span>
+                )}
+              </div>
+              
+              <div class="flex items-center text-primary font-medium group-hover:gap-2 transition-all mt-auto">
+                Ver caso de estudio
+                <svg class="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <div class="text-center py-20">
+          <p class="text-2xl text-gray-600 mb-4">No hay proyectos en esta categoría aún</p>
+          <a 
+            href="/proyectos" 
+            class="text-primary hover:text-primary-dark underline"
+          >
+            Ver todos los proyectos
+          </a>
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-4 text-gray-900">
+        ¿Tenés un proyecto en mente?
+      </h2>
+      <p class="text-xl mb-12 text-gray-600">
+        Cada proyecto es único. Contanos tu idea y te ayudamos a 
+        transformarla en una solución digital a medida.
+      </p>
+      
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contacto"
+          class="inline-flex items-center justify-center px-8 py-4 bg-primary hover:bg-primary-dark text-white font-medium rounded-lg transition-colors"
+        >
+          Solicitar presupuesto
+          <svg class="ml-2 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a
+          href="mailto:contacto@vidalatech.com"
+          class="inline-flex items-center justify-center px-8 py-4 border-2 border-primary text-primary hover:bg-primary-lighter font-medium rounded-lg transition-all"
+        >
+          <svg class="mr-2 w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          contacto@vidalatech.com
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
