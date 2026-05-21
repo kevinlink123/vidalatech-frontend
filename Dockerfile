@@ -1,8 +1,11 @@
 # Multi-stage build para Astro
 FROM node:lts-slim AS builder
+# Activar yarn moderno
+RUN npm install -g corepack
+
 WORKDIR /app
-COPY package*.json ./
-RUN npm ci
+COPY package.json yarn.lock ./
+RUN yarn install --immutable-cache
 COPY . .
 
 # Recibir argumentos de build
