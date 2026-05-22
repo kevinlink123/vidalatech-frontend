@@ -36,11 +36,11 @@ const { title, description = 'Vidala Tech - Soluciones Digitales Profesionales' 
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex items-center space-x-8">
-          <a href="/nosotros" class="text-gray-600 hover:text-primary transition-colors nav-link">Nosotros</a>
-          <a href="/#servicios" class="text-gray-600 hover:text-primary transition-colors nav-link">Servicios</a>
-          <a href="/#competencias" class="text-gray-600 hover:text-primary transition-colors nav-link">Competencias</a>
-          <a href="/proyectos" class="text-gray-600 hover:text-primary transition-colors">Proyectos</a>
-          <a href="/contacto" class="px-6 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors">
+          <a href="/nosotros" data-umami-event="navbar-nosotros" class="text-gray-600 hover:text-primary transition-colors nav-link">Nosotros</a>
+          <a href="/#servicios" data-umami-event="navbar-servicios" class="text-gray-600 hover:text-primary transition-colors nav-link">Servicios</a>
+          <a href="/#competencias" data-umami-event="navbar-competencias" class="text-gray-600 hover:text-primary transition-colors nav-link">Competencias</a>
+          <a href="/proyectos" data-umami-event="navbar-proyectos" class="text-gray-600 hover:text-primary transition-colors">Proyectos</a>
+          <a href="/contacto" data-umami-event="navbar-contacto" class="px-6 py-2 bg-primary hover:bg-primary-dark text-white rounded-lg transition-colors">
             Contacto
           </a>
         </div>
@@ -57,11 +57,11 @@ const { title, description = 'Vidala Tech - Soluciones Digitales Profesionales' 
     <!-- Mobile Menu -->
     <div class="hidden md:hidden border-t border-gray-200 bg-white" id="mobileMenu">
       <div class="px-4 py-4 space-y-3">
-        <a href="/nosotros" class="block py-2 text-gray-600 nav-link">Nosotros</a>
-        <a href="/#servicios" class="block py-2 text-gray-600 nav-link">Servicios</a>
-        <a href="/#competencias" class="block py-2 text-gray-600 nav-link">Competencias</a>
-        <a href="/proyectos" class="block py-2 text-gray-600">Proyectos</a>
-        <a href="/contacto" class="block py-2 text-primary font-medium">Contacto</a>
+        <a href="/nosotros" data-umami-event="navbar-nosotros" class="block py-2 text-gray-600 nav-link">Nosotros</a>
+        <a href="/#servicios" data-umami-event="navbar-servicios" class="block py-2 text-gray-600 nav-link">Servicios</a>
+        <a href="/#competencias" data-umami-event="navbar-competencias" class="block py-2 text-gray-600 nav-link">Competencias</a>
+        <a href="/proyectos" data-umami-event="navbar-proyectos" class="block py-2 text-gray-600">Proyectos</a>
+        <a href="/contacto" data-umami-event="navbar-contacto" class="block py-2 text-primary font-medium">Contacto</a>
       </div>
     </div>
   </nav>
