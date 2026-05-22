@@ -22,7 +22,6 @@ const { title, description = 'Vidala Tech - Soluciones Digitales Profesionales' 
   <link rel="icon" type="image/svg+xml" href="/vidala-tech-logo-BIG.svg" />
   <link rel="sitemap" href="/sitemap-index.xml" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <script defer src="https://analytics.vidalatech.dpdns.org/script.js" data-website-id="21ec108c-9592-4135-9eda-27aed6ee8513"></script>
 </head>
 <body class="bg-main-white text-gray-900">
   <!-- Navigation -->
@@ -85,7 +84,25 @@ const { title, description = 'Vidala Tech - Soluciones Digitales Profesionales' 
     </div>
   </footer>
 
-  <script>
+<script>
+  const umamiId =  import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+  const umamiScript = import.meta.env.PUBLIC_UMAMI_SCRIPT_URL;
+
+  // Carga dinamica de script de umami dependiendo de las env vars
+  if (umamiId) {
+    const script = document.createElement('script');
+    script.async = true;
+    script.defer = true;
+    script.src = umamiScript;
+    script.dataset.websiteId = umamiId;
+    document.head.appendChild(script);
+    
+    console.log(`[Umami] Tracking activado para DEV (ID: ${umamiId.substring(0, 8)}...)`);
+  } else {
+    console.log('[Umami] No configurado para este entorno');
+  }
+
+
   // Mobile menu toggle
   const menuBtn = document.getElementById('menuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
