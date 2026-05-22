@@ -366,8 +366,7 @@ const faqs = [
         if(!response.ok) {
           throw new Error(result.message || 'Error al enviar el formulario');
         }
-
-        // Feedback visual temporal (hasta que tengas backend)
+        
         alert('¡Gracias por tu consulta! Te responderemos en 24-48 hs hábiles.');
         form.reset();
       } catch(err: any) {

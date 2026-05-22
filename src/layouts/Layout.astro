@@ -95,8 +95,8 @@ const { title, description = 'Vidala Tech - Soluciones Digitales Profesionales' 
     script.src = umamiScript;
     script.dataset.websiteId = umamiId;
     document.head.appendChild(script);
-    
-    console.log(`[Umami] Tracking activado para DEV (ID: ${umamiId.substring(0, 8)}...)`);
+     
+    console.log(import.meta.env.DEV ? "[Umami] Tracking activado para DEV" : "[Umami] Tracking activado para PROD");
   } else {
     console.log('[Umami] No configurado para este entorno');
   }
